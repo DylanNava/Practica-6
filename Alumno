@@ -1,0 +1,36 @@
+#ifndef PERSONA_H
+#define PERSONA_H
+#include "iostream"
+
+using namespace std;
+
+// Clase Alumno
+class Alumno {
+public:
+    string nombre;
+    string carrera;
+    int materiasAprobadas;
+    float promedioGeneral;
+
+    void print(){
+        cout << "Nombre: " << nombre << endl;
+        cout << "Carrera: " << carrera << endl;
+        cout << "Materias aprobadas: " << materiasAprobadas << endl;
+        cout << "Promedio general: " << promedioGeneral << endl;
+    }
+
+    friend ostream& operator<<(ostream& os, const Alumno& x){
+    os<<"Nombre: "<<x.nombre<<endl<<"Carrera: "<<x.carrera<<endl<<"Materias aprobadas: "<<x.materiasAprobadas<<endl<<"Promedio: "<<x.promedioGeneral;
+    return os;
+    }
+    friend istream& operator>>(istream& is, Alumno& y) {
+    is >> y.nombre >> y.carrera >> y.materiasAprobadas >> y.materiasAprobadas;
+    return is;
+    }
+    friend operator==(const Alumno& a, const Alumno& b){
+        return a.nombre==b.nombre;
+    }
+
+};
+
+#endif // PERSONA_H
